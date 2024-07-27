@@ -3,7 +3,6 @@ import React from "react";
 import { useCart } from "../utils/cartContext";
 
 const Header: React.FC = () => {
-  console.log("Header.");
   const { cart } = useCart();
 
   return (

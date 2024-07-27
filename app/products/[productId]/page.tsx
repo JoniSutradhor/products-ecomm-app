@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import { products } from "../../utils/data";
 import { Product } from "../../utils/types";
-import Layout from "../../components/Layout";
 
 interface ProductPageProps {
   params: {
@@ -36,20 +35,18 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   }
 
   return (
-    <Layout>
-      <div className="product-details">
-        <img
-          src={product.featuredImageUrl}
-          alt={product.name}
-          className="w-full h-96 object-contain"
-        />
-        <div className="flex flex-col items-center">
-          <h1 className="text-2xl font-bold mt-2">{product.name}</h1>
-          <p>Price: ${product.productPrice.price}</p>
-          <p>Available Quantity: {product.quantity}</p>
-        </div>
+    <div className="product-details">
+      <img
+        src={product.featuredImageUrl}
+        alt={product.name}
+        className="w-full h-96 object-contain"
+      />
+      <div className="flex flex-col items-center">
+        <h1 className="text-2xl font-bold mt-2">{product.name}</h1>
+        <p>Price: ${product.productPrice.price}</p>
+        <p>Available Quantity: {product.quantity}</p>
       </div>
-    </Layout>
+    </div>
   );
 };
 

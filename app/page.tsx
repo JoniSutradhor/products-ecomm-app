@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Home() {
-  return <div>Hi Kuttus, Tumi ki koro Mammaaaaaaaa.</div>;
+  return <div>Home Not Using, Redirected to the Products Page..</div>;
 }

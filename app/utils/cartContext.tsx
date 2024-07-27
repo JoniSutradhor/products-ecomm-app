@@ -35,7 +35,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         const parsedCart = JSON.parse(storedCart);
         if (Array.isArray(parsedCart)) {
           setCart(parsedCart);
-          console.log("Cart loaded from localStorage:", parsedCart);
         } else {
           console.warn("Parsed cart is not an array:", parsedCart);
         }
@@ -49,7 +48,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   useEffect(() => {
     if (isCartLoadedFromLocal) {
       try {
-        console.log("Saving cart to localStorage:", cart);
         localStorage.setItem("cart", JSON.stringify(cart));
       } catch (error) {
         console.error("Failed to save cart to localStorage:", error);
@@ -66,11 +64,9 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
-        console.log("Cart updated (product added):", updatedCart);
         return updatedCart;
       } else {
         const newCart = [...prevCart, { ...product, quantity: 1 }];
-        console.log("Cart updated (new product added):", newCart);
         return newCart;
       }
     });
@@ -81,7 +77,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       const existingProduct = prevCart.find((item) => item.id === productId);
       if (existingProduct?.quantity === 1) {
         const updatedCart = prevCart.filter((item) => item.id !== productId);
-        console.log("Cart updated (product removed):", updatedCart);
         return updatedCart;
       } else {
         const updatedCart = prevCart.map((item) =>
@@ -89,7 +84,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
             ? { ...item, quantity: item.quantity - 1 }
             : item
         );
-        console.log("Cart updated (product quantity decreased):", updatedCart);
         return updatedCart;
       }
     });

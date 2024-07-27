@@ -1,5 +1,4 @@
 import React from "react";
-import Layout from "../../components/Layout";
 
 const Loading: React.FC = () => {
   return (
